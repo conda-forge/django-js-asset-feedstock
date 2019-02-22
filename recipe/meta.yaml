@@ -1,6 +1,6 @@
 {% set name = "django-js-asset" %}
-{% set version = "1.1.0" %}
-{% set sha256 = "30149158206f693a5d027fe590096fc84495486bd11cd77d395b4f2ec27fc1d0" %}
+{% set version = "1.2.2" %}
+{% set sha256 = "c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260" %}
 
 package:
   name: {{ name|lower }}
