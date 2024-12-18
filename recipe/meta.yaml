@@ -1,6 +1,6 @@
 {% set name = "django-js-asset" %}
-{% set version = "1.2.2" %}
-{% set sha256 = "c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260" %}
+{% set version = "3.0.1" %}
+{% set sha256 = "5ad51814edf38d28e6280e6ecad50ee40551363a2f6a6bfe93577dee793dc378" %}
 
 package:
   name: {{ name|lower }}
@@ -8,16 +8,16 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  build:
+  host:
     - python
     - pip
   run:
