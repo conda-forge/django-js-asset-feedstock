@@ -1,46 +1,47 @@
 {% set name = "django-js-asset" %}
-{% set version = "1.2.2" %}
-{% set sha256 = "c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260" %}
+{% set version = "3.0.1" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/django_js_asset-{{ version }}.tar.gz
+  sha256: 5ad51814edf38d28e6280e6ecad50ee40551363a2f6a6bfe93577dee793dc378
 
 build:
-  number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
-  build:
-    - python
+  host:
+    - python {{ python_min }}
+    - hatchling
     - pip
   run:
-    - python
-    - django
+    - python >={{ python_min }}
+    - django >=4.2
 
 test:
   imports:
     - js_asset
-    - js_asset.js
+  commands:
+    - pip check
+  requires:
+    - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/matthiask/django-js-asset
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'script tag with additional attributes for django.forms.Media'
-  description: |
-    script tag with additional attributes for django.forms.Media
-  doc_url: https://github.com/matthiask/django-js-asset
-  dev_url: https://github.com/matthiask/django-js-asset
+  summary: Script tag with additional attributes for django.forms.Media.
 
 extra:
   recipe-maintainers:
     - cshaley
     - sannykr
+    - thewchan
