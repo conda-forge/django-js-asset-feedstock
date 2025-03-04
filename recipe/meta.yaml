@@ -1,5 +1,5 @@
 {% set name = "django-js-asset" %}
-{% set version = "3.0.1" %}
+{% set version = "3.1.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/django_js_asset-{{ version }}.tar.gz
-  sha256: 5ad51814edf38d28e6280e6ecad50ee40551363a2f6a6bfe93577dee793dc378
+  sha256: b8855d9983174ea162c8fb2bfcb3c9ff559f373226554f196170c93f07597c3d
 
 build:
   noarch: python
